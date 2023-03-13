@@ -6,7 +6,7 @@ using Mopups.Pages;
 
 namespace Mopups.Services;
 
-public class PopupNavigation : IPopupNavigation
+public partial class PopupNavigation : IPopupNavigation
 {
     private readonly object _locker = new();
 
@@ -21,30 +21,15 @@ public class PopupNavigation : IPopupNavigation
 
     public event EventHandler<PopupNavigationEventArgs>? Popped;
 
-    private static readonly Lazy<IPopupPlatform> lazyImplementation = new(() => GeneratePopupPlatform(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+    private static readonly Lazy<IPopupPlatform> lazyImplementation = new(() => PullPlatformImplementation(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
     private readonly IPopupPlatform PopupPlatform = lazyImplementation.Value;
 
-    private static IPopupPlatform GeneratePopupPlatform()
-    {
-        return PullPlatformImplementation();
-
-
-        static IPopupPlatform PullPlatformImplementation()
-        {
-#if ANDROID
-            return new Mopups.Droid.Implementation.AndroidMopups();
-#elif IOS
-            return new Mopups.iOS.Implementation.iOSMopups();
-#elif MACCATALYST
-            return new Mopups.MacCatalyst.Implementation.MacOSMopups();
-#elif WINDOWS
-            return new Mopups.Windows.Implementation.PopupPlatformWindows();
-#endif
-
-            throw new PlatformNotSupportedException();
-        }
-    }
+    private static partial IPopupPlatform PullPlatformImplementation();
+    //private static IPopupPlatform GeneratePopupPlatform()
+    //{
+    //    return PullPlatformImplementation();
+    //}
 
     private void OnInitialized(object? sender, EventArgs e)
     {
