@@ -30,8 +30,6 @@ jobs:
       command: 'build'
       projects: '$(Project.Path)'
       arguments: '--no-restore -c Release'
-
-  -
   - task: DotNetCoreCLI@2
     displayName: dotnet build and pack
     inputs:
