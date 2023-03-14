@@ -12,13 +12,13 @@ trigger:
     - master
   paths:
     include:
-    - Windows
+    - Mopups
 
 jobs:
 - job: Phase_1 
   cancelTimeoutInMinutes: 1
   pool:
-    name: Docker
+    name: Windows
   steps:
   - checkout: self
   - task: DotNetCoreCLI@2
