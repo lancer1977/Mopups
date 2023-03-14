@@ -3,6 +3,7 @@ name: 1.0.0.$(rev:r)-Poly
 variables: 
 - name: Project.Path
   value: Mopups/Mopups.Maui/Mopups.csproj
+- name: Release
 trigger:
   branches:
     include:
@@ -15,12 +16,10 @@ jobs:
   steps:
   - checkout: self
   - task: DotNetCoreCLI@2
-    displayName: dotnet pack
     inputs:
-      command: pack
-      searchPatternPack: $(Project.Path)
-      versioningScheme: byBuildNumber
-      arguments: -c Release 
+      command: 'pack'
+      packagesToPack: '$(Project.Path)'
+      versioningScheme: 'byBuildNumber'  
   - task: NuGetCommand@2
     displayName: NuGet push
     inputs:
@@ -36,3 +35,4 @@ jobs:
       avatar: 'https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/277759422_459407522643032_5740191239763665615_n.png?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Eh7rt73EuYcAX-1w6EJ&_nc_ht=scontent-iad3-1.xx&oh=00_AfA8K4k2WtaqlaA0CEznY-Hk2DZY3gsdDwPp-XOw3L1B3Q&oe=64121C61'
       messageType: 'content'
       content: 'Mopups Completed Build: $(Build.BuildID)'
+      embeds: 
