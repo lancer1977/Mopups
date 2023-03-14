@@ -10,41 +10,41 @@ trigger:
     - master
   paths:
     include:
-    - Docker
+    - Mopups
 
 jobs:
 - job: Phase_1 
   cancelTimeoutInMinutes: 1
   pool:
-    name: Default
+    name: Docker
   steps:
   - checkout: self
   - task: DotNetCoreCLI@2
     displayName: dotnet restore
     inputs:
       command: restore
-      projects: $(Project.Path)
+      projects: '$(Project.Path)'
       feedRestore: 015fc12f-cd63-4ab4-8d6a-dc889e53bf70
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      projects: '$(Project.Path)'
+      arguments: '--no-restore -c Release'
+
+  -
   - task: DotNetCoreCLI@2
     displayName: dotnet build and pack
     inputs:
       command: pack
       packagesToPack: '$(Project.Path)' 
       versioningScheme: 'byBuildNumber'
-      arguments: --configuration Release --no-restore
+      arguments: --configuration Release --no-restore --no-build
   - task: NuGetCommand@2
     displayName: Poly NuGet push
     inputs:
       command: push
       feedPublish: 015fc12f-cd63-4ab4-8d6a-dc889e53bf70
       allowPackageConflicts: false
-  - task: NuGetCommand@2
-    displayName: NuGet.org push
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-      nuGetFeedType: 'external'
-      publishFeedCredentials: 'Nuget Org'
   - task: ado-discord-webhook@1
     inputs:
       channelId: '1083779130576879656'
