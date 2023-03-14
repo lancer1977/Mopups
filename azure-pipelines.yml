@@ -3,14 +3,16 @@ name: 1.0.0.$(rev:r)-Poly
 variables: 
 - name: Project.Path
   value: $(Build.SourcesDirectory)/Mopups/Mopups.Maui/Mopups.csproj 
-  
+- name: BuildConfig
+  value: Release
+
 trigger:
   branches:
     include:
     - master
   paths:
     include:
-    - Mopups
+    - Windows
 
 jobs:
 - job: Phase_1 
@@ -29,14 +31,14 @@ jobs:
     inputs:
       command: 'build'
       projects: '$(Project.Path)'
-      arguments: '--no-restore -c Release'
+      arguments: '--no-restore -c $(BuildConfig)'
   - task: DotNetCoreCLI@2
     displayName: dotnet build and pack
     inputs:
       command: pack
       packagesToPack: '$(Project.Path)' 
       versioningScheme: 'byBuildNumber'
-      arguments: --configuration Release --no-restore --no-build
+      arguments: --configuration $(BuildConfig) --no-restore --no-build
   - task: NuGetCommand@2
     displayName: Poly NuGet push
     inputs:
