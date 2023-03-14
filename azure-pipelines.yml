@@ -10,7 +10,7 @@ trigger:
     - master
   paths:
     include:
-    - Mopups
+    - Docker
 
 jobs:
 - job: Phase_1 
