@@ -2,7 +2,7 @@
 name: 1.0.0.$(rev:r)-Poly
 variables: 
 - name: Project.Path
-  value: Mopups\Mopups.Maui\Mopups.csproj
+  value: /Mopups/Mopups.Maui/Mopups.csproj
 trigger:
   branches:
     include:
