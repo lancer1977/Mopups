@@ -16,6 +16,10 @@ Platforms Supported (Current)
 - Windows
 - MacOS (Mac Catalyst)
 
+### .NET Support
+- .NET 8.0
+- .NET 9.0
+
 
 Below is a video by @jfversluis introducing Mopups
 
