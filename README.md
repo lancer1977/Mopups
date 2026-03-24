@@ -24,3 +24,9 @@ Platforms Supported (Current)
 Below is a video by @jfversluis introducing Mopups
 
 [![Watch the video](https://img.youtube.com/vi/OGWhgASmSto/hqdefault.jpg)](https://youtu.be/OGWhgASmSto)
+
+
+## 📖 Documentation
+Detailed documentation can be found in the following sections:
+- [Feature Index](./docs/features/README.md)
+- [Core Capabilities](./docs/features/core-capabilities.md)
