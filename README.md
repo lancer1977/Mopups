@@ -26,6 +26,15 @@ Below is a video by @jfversluis introducing Mopups
 [![Watch the video](https://img.youtube.com/vi/OGWhgASmSto/hqdefault.jpg)](https://youtu.be/OGWhgASmSto)
 
 
+## Tags
+
+- mopups
+- dotnet
+- docs
+- video
+- mobile
+- ui
+
 ## 📖 Documentation
 Detailed documentation can be found in the following sections:
 - [Feature Index](./docs/features/README.md)
