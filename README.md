@@ -37,5 +37,7 @@ Below is a video by @jfversluis introducing Mopups
 
 ## 📖 Documentation
 Detailed documentation can be found in the following sections:
+- [Docs README](./docs/README.md)
 - [Feature Index](./docs/features/README.md)
 - [Core Capabilities](./docs/features/core-capabilities.md)
+- [Roadmap Index](./docs/roadmaps/README.md)
