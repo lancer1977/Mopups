@@ -61,7 +61,7 @@ dotnet test tests/Mopups.Tests.csproj
 
 ## CI/CD
 
-- Azure Pipelines: `azure-pipelines.yml`
+- GitHub Actions: `.github/workflows/ci.yml`
 - NuGet package auto-generated on build
 
 ## Notes
