@@ -24,50 +24,50 @@
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
-    <Compile Remove="**\**\*.Android.cs" />
-    <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/Android/**/*.cs" />
+    <None Include="Platforms/Android/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- Android .NET 9 -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-android')) != true">
-    <Compile Remove="**\**\*.Android.cs" />
-    <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/Android/**/*.cs" />
+    <None Include="Platforms/Android/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- iOS .NET 8 -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true">
-    <Compile Remove="**\**\*.iOS.cs" />
-    <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/iOS/**/*.cs" />
+    <None Include="Platforms/iOS/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- iOS .NET 9 -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-ios')) != true">
-    <Compile Remove="**\**\*.iOS.cs" />
-    <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/iOS/**/*.cs" />
+    <None Include="Platforms/iOS/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- Mac Catalyst .NET 8 -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
-    <Compile Remove="**\**\*.MacCatalyst.cs" />
-    <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/MacCatalyst/**/*.cs" />
+    <None Include="Platforms/MacCatalyst/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- Mac Catalyst .NET 9 -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-maccatalyst')) != true">
-    <Compile Remove="**\**\*.MacCatalyst.cs" />
-    <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/MacCatalyst/**/*.cs" />
+    <None Include="Platforms/MacCatalyst/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- Windows .NET 8 -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-windows')) != true">
-    <Compile Remove="**\*.Windows.cs" />
-    <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/Windows/**/*.cs" />
+    <None Include="Platforms/Windows/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- Windows .NET 9 -->
   <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-windows')) != true">
-    <Compile Remove="**\*.Windows.cs" />
-    <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <Compile Remove="Platforms/Windows/**/*.cs" />
+    <None Include="Platforms/Windows/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
   <!-- .NET -->

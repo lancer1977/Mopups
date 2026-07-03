@@ -2,6 +2,18 @@
 
 This folder captures a reusable shell-script baseline for .NET coverage workflows.
 
+## Validate
+
+Run the repo's validation target:
+
+```bash
+./scripts/validate.sh
+```
+
+The script defaults to `tests/Mopups.Tests/Mopups.Tests.csproj` with `CONFIGURATION=Release`. Override `VALIDATION_TARGET` or pass extra `dotnet test` arguments when needed.
+
+## Coverage
+
 Copy the script into a product repo when you want a simple local command that:
 
 - runs the target test project or solution

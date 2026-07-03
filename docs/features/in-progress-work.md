@@ -1,11 +1,11 @@
 ---
 title: In Progress Work
-status: doing
+status: done
 owner: @DreadBreadcrumb
 priority: high
 complexity: 1
 created: 2026-03-19
-updated: 2026-03-19
+updated: 2026-07-03
 tags: [documentation, Mopups, roadmap]
 ---
 
@@ -13,7 +13,6 @@ tags: [documentation, Mopups, roadmap]
 
 ## Discovered evidence:
 
-### Inline TODOs found
-Multiple TODOs identified in source files.
-
+### Inline TODOs reviewed
+No active inline TODO, FIXME, or HACK markers remain in source files. The remaining `NotImplementedException` marker is the intentional portable assembly guard in `MopupService`, which tells consumers to reference the platform-specific package from the application project.
 
