@@ -18,6 +18,7 @@ This directory documents all features and roadmap items. All state is now tracke
 - [Visual Studio Solution](./visual-studio-solution.md)
 - [Sub-module: SampleMaui](./sub-module-samplemaui.md)
 - [Sub-module: Mopups](./sub-module-mopups.md)
+- [Popup Lifecycle and Platform Contract](./popup-lifecycle-contract.md)
 
 
 ## Beyond the App
