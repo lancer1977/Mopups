@@ -48,6 +48,11 @@
     <None Include="Platforms/Net/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
+  <ItemGroup Condition="$(TargetFramework.Contains('-')) != true">
+    <Compile Remove="Platforms/Net/PopupNavigation.Portable.cs" />
+    <Compile Include="Platforms/Net/PopupNavigation.Portable.cs" />
+  </ItemGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 		<PlatformTarget>AnyCPU</PlatformTarget>
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
