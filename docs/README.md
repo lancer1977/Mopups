@@ -6,6 +6,7 @@ Canonical docs entrypoint for Mopups.
 
 - [Repository README](../README.md)
 - [Feature Index](./features/README.md)
+- [Popup Lifecycle and Platform Contract](./features/popup-lifecycle-contract.md)
 - [Roadmap Index](./roadmaps/README.md)
 
 ## Notes

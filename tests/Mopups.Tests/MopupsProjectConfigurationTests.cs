@@ -6,22 +6,18 @@ namespace Mopups.Tests;
 public class MopupsProjectConfigurationTests
 {
     [Theory]
-    [InlineData("net8.0-android", "Platforms/Android/**/*.cs")]
-    [InlineData("net9.0-android", "Platforms/Android/**/*.cs")]
-    [InlineData("net8.0-ios", "Platforms/iOS/**/*.cs")]
-    [InlineData("net9.0-ios", "Platforms/iOS/**/*.cs")]
-    [InlineData("net8.0-maccatalyst", "Platforms/MacCatalyst/**/*.cs")]
-    [InlineData("net9.0-maccatalyst", "Platforms/MacCatalyst/**/*.cs")]
-    [InlineData("net8.0-windows", "Platforms/Windows/**/*.cs")]
-    [InlineData("net9.0-windows", "Platforms/Windows/**/*.cs")]
+    [InlineData("-android", "Platforms/Android/**/*.cs")]
+    [InlineData("-ios", "Platforms/iOS/**/*.cs")]
+    [InlineData("-maccatalyst", "Platforms/MacCatalyst/**/*.cs")]
+    [InlineData("-windows", "Platforms/Windows/**/*.cs")]
     public void PlatformSpecificSources_AreExcludedWhenTargetFrameworkDoesNotMatchPlatform(
-        string targetFramework,
+        string platformSuffix,
         string platformGlob)
     {
         var itemGroups = LoadProject()
             .Root!
             .Elements("ItemGroup")
-            .Where(group => ((string?)group.Attribute("Condition"))?.Contains($"$(TargetFramework.StartsWith('{targetFramework}')) != true") == true);
+            .Where(group => ((string?)group.Attribute("Condition"))?.Contains($"$(TargetFramework.Contains('{platformSuffix}')) != true") == true);
 
         Assert.Contains(
             itemGroups,
