@@ -23,9 +23,8 @@ and configures Android back-button forwarding. Applications using a custom
 `IPopupNavigation` implementation may set it through `MopupService.SetInstance`.
 
 The portable reference assembly is not a native runtime. Accessing the default
-navigation implementation there produces an actionable `NotImplementedException`
-that tells consumers to reference the platform-specific NuGet package from the
-application project.
+navigation implementation there produces a `PlatformNotSupportedException`
+that tells consumers Mopups requires a platform-specific MAUI target framework.
 
 ## Portable navigation guarantees
 
