@@ -7,17 +7,27 @@ on:
   pull_request:
     branches: [master]
 
-jobs: 
+permissions:
+  contents: read
+
+jobs:
   build:
     name: Build
     runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      with:
+        persist-credentials: false
+    - name: Set up .NET
+      uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+      with:
+        global-json-file: global.json
+    - name: Setup Java SDK
+      uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4
+      with:
+        distribution: temurin
+        java-version: 17
     - name: Install workload
       run: dotnet workload install maui
-    - name: Setup Java SDK
-      uses: actions/setup-java@v1
-      with:
-        java-version: 17
     - name: Build
       run: dotnet build -c Release

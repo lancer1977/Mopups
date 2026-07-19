@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 
-		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst;</TargetFrameworks>
+		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0;net9.0-windows10.0.19041.0</TargetFrameworks>
 
 		<!-- iOS, Android, MacCatalyst -->
@@ -23,59 +23,36 @@
 
   </PropertyGroup>
 
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
+  <ItemGroup Condition="$(TargetFramework.Contains('-android')) != true">
     <Compile Remove="Platforms/Android/**/*.cs" />
     <None Include="Platforms/Android/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
-  <!-- Android .NET 9 -->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-android')) != true">
-    <Compile Remove="Platforms/Android/**/*.cs" />
-    <None Include="Platforms/Android/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-  </ItemGroup>
-
-  <!-- iOS .NET 8 -->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true">
+  <ItemGroup Condition="$(TargetFramework.Contains('-ios')) != true">
     <Compile Remove="Platforms/iOS/**/*.cs" />
     <None Include="Platforms/iOS/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
-  <!-- iOS .NET 9 -->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-ios')) != true">
-    <Compile Remove="Platforms/iOS/**/*.cs" />
-    <None Include="Platforms/iOS/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-  </ItemGroup>
-
-  <!-- Mac Catalyst .NET 8 -->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+  <ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst')) != true">
     <Compile Remove="Platforms/MacCatalyst/**/*.cs" />
     <None Include="Platforms/MacCatalyst/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
-  <!-- Mac Catalyst .NET 9 -->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-maccatalyst')) != true">
-    <Compile Remove="Platforms/MacCatalyst/**/*.cs" />
-    <None Include="Platforms/MacCatalyst/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-  </ItemGroup>
-
-  <!-- Windows .NET 8 -->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-windows')) != true">
+  <ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true">
     <Compile Remove="Platforms/Windows/**/*.cs" />
     <None Include="Platforms/Windows/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
-  <!-- Windows .NET 9 -->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net9.0-windows')) != true">
-    <Compile Remove="Platforms/Windows/**/*.cs" />
-    <None Include="Platforms/Windows/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <ItemGroup Condition="$(TargetFramework.Contains('-'))">
+    <Compile Remove="Platforms/Net/**/*.cs" />
+    <None Include="Platforms/Net/**/*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
-  <!-- .NET -->
-  <ItemGroup Condition="!($(TargetFramework.StartsWith('net')) == true AND $(TargetFramework.EndsWith('.0')) == true AND $(TargetFramework.Contains('-')) != true)">
-    <!-- e.g net6.0 or net8.0 -->
-    <Compile Remove="**\*.net.cs" />
-    <None Include="**\*.net.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <ItemGroup Condition="$(TargetFramework.Contains('-')) != true">
+    <Compile Remove="Platforms/Net/PopupNavigation.Portable.cs" />
+    <Compile Include="Platforms/Net/PopupNavigation.Portable.cs" />
   </ItemGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 		<PlatformTarget>AnyCPU</PlatformTarget>
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
