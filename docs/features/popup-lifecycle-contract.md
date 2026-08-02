@@ -73,6 +73,25 @@ and record the exact target framework. For a native handler change, also run the
 appropriate Android, iOS, Mac Catalyst, or Windows sample/device lane and record
 open/close, nested popup, cancellation/failure, and cleanup observations.
 
+## Issue #2 V1.1 delivery record
+
+GitHub issue #2 tracks the V1.1 popup lifecycle hardening sequence. Keep the
+issue open until the native evidence lanes are proven; do not use portable mock
+tests to claim iOS or Mac Catalyst behavior is fixed.
+
+| Slice | Status | Evidence |
+| --- | --- | --- |
+| V1.1.1 lifecycle contract and portable race coverage | Merged | PR #3 merged as `425c2d3c60f377ce831e16d40a13291b536cafc7`; the merged slice added this contract page, linked it from README/docs, and aligned portable project tests through `6fb519d587dfc0dd930e3299e306f7d3c2adabae`. Issue comment evidence records focused portable tests passing 34/34 before merge. |
+| V1.1.2 context/window acquisition hardening | Pending platform evidence | Current Linux investigation could not reproduce an iOS or Mac Catalyst context/window failure because Darwin, Xcode, simulators, and Apple MAUI workloads were unavailable. No concrete native failure was evidenced, so no rewrite or handler hardening is currently justified. |
+| V1.1.3 native lifecycle evidence | Pending platform evidence | Requires an Apple-capable lane for iOS and Mac Catalyst smoke/lifecycle observations. Record the exact device or simulator runtime, workload set, sample-app path, and open/close/nested/cleanup observations before claiming native behavior. |
+
+Suggested issue #2 checklist state after PR #3:
+
+- [x] README and feature documentation identify the supported framework/platform matrix and lifecycle boundary for V1.1.1.
+- [x] Portable tests cover the public lifecycle contract to the extent the mock seam permits; this is portable evidence only.
+- [ ] V1.1.2: provide reproducible iOS/Mac Catalyst context-window failure evidence, or leave the slice pending without a speculative rewrite.
+- [ ] V1.1.3: run and record native platform lifecycle evidence on supported device/simulator/runtime lanes.
+
 ## Non-goals
 
 This contract does not add a public cancellation-token API, change handler
