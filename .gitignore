@@ -298,3 +298,6 @@ node_modules/
 # OS cruft
 .DS_Store
 Thumbs.db
+
+# Agent worktree checkouts (embedded repos; never tracked as gitlinks)
+.worktrees/
