@@ -17,8 +17,8 @@ Platforms Supported (Current)
 - MacOS (Mac Catalyst)
 
 ### .NET Support
-- .NET 8.0
-- .NET 9.0
+- .NET 9.0 for MAUI mobile platforms (Android, iOS, Mac Catalyst, Windows)
+- .NET 8.0 MAUI mobile support was dropped due to upstream end-of-support
 
 
 Below is a video by @jfversluis introducing Mopups
