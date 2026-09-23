@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 
-		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0;net9.0-windows10.0.19041.0</TargetFrameworks>
 
 		<!-- iOS, Android, MacCatalyst -->
@@ -53,10 +53,6 @@
     <Compile Include="Platforms/Net/PopupNavigation.Portable.cs" />
   </ItemGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-	</PropertyGroup>
 	<PropertyGroup>
 		<InvariantGlobalization Condition="$(TargetFramework.Contains('-maccatalyst'))">true</InvariantGlobalization>
 		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-maccatalyst'))">maccatalyst-x64</RuntimeIdentifier>
@@ -71,10 +67,6 @@
 		<PackageReleaseNotes>Added support for both Windows and MacOS</PackageReleaseNotes>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
 		<PlatformTarget>AnyCPU</PlatformTarget>
